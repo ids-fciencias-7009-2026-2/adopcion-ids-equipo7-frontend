@@ -5,28 +5,32 @@
 
 # Instalación y configuración
 Estos pasos se realizan solo la primera vez.
-* 1) Instalar Python
-* 2) Clonar el repositorio y ubicarse en la raíz del proyecto.
-* 3) Creación del entorno (venv)
+1) Instalar Python
+2) Clonar el repositorio y ubicarse en la raíz del proyecto.
+3) Creación del entorno (venv)
 ```bash
 python -m venv venv
 ```
-* 4) Activación del entorno
+4) Activación del entorno
 ```bash
 source venv/bin/activate
 ```
-* 5) Instalación de dependencias (PyQt)
+5) Instalación de dependencias (PyQt)
 ```bash
 pip install -r requirements.txt
 ```
 
 # Levantamiento y ejecución
 Estos son los pasos necesarios cada que levantemos el proyecto.
-* 1) Activación del entorno
+1) Activación del entorno
 ```bash
 source venv/bin/activate
 ```
-* 3) Salir del entorno
+2 ) Ejecución del programa
+```bash
+python src/main.py
+```
+3) Salir del entorno
 Cerrar terminal o ejecutar:
 ```bash
 deactivate
