@@ -26,11 +26,12 @@ Estos son los pasos necesarios cada que levantemos el proyecto.
 ```bash
 source venv/bin/activate
 ```
-2 ) Ejecución del programa
+2) Ejecución del programa
 ```bash
 python src/main.py
 ```
 3) Salir del entorno
+
 Cerrar terminal o ejecutar:
 ```bash
 deactivate
