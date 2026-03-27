@@ -39,7 +39,7 @@ adopcion-ids-equipo7-frontend/
 ### Opción A) Abrir directo (rápido)
 1. Clona el repositorio:
    ```bash
-   git clone <URL_DEL_REPO>
+   git clone https://github.com/ids-fciencias-7009-2026-2/adopcion-ids-equipo7-frontend.git
    cd adopcion-ids-equipo7-frontend
    ```
 2. Abre el archivo en la carpeta:
