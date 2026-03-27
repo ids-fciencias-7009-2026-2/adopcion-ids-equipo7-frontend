@@ -1,55 +1,67 @@
-# Requisitos
-- Python
+# adopcion-ids-equipo7-frontend
+
+Frontend del **Sistema de Adopción de Mascotas (Equipo 7)**.
+
+Este repositorio contiene una versión mínima del frontend para la práctica, sirve para validar que el repo de frontend fue inicializado correctamente y que se puede ejecutar localmente.
 
 ---
 
-# Instalación y configuración
-Estos pasos se realizan solo la primera vez.
-1) Instalar Python
-2) Clonar el repositorio y ubicarse en la raíz del proyecto.
-3) Creación del entorno (venv)
-```bash
-python -m venv venv
-```
-4) Activación del entorno
-```bash
-source venv/bin/activate
-```
-5) Instalación de dependencias (PyQt)
-```bash
-pip install -r requirements.txt
-```
+## Tecnologías
 
-# Levantamiento y ejecución
-Estos son los pasos necesarios cada que levantemos el proyecto.
-1) Activación del entorno
-```bash
-source venv/bin/activate
-```
-2) Ejecución del programa
-```bash
-python src/main.py
-```
-3) Salir del entorno
+- HTML5
+- JavaScript (Vanilla)
 
-Cerrar terminal o ejecutar:
-```bash
-deactivate
-```
+> No usa frameworks ni dependencias por ahora.
 
 ---
 
-# Estructura del proyecto
+## Estructura del proyecto
 
-```bash
+```
 adopcion-ids-equipo7-frontend/
-│
-├── venv/                   # Entorno virtual y personal de Python
-├── src/                    # Código fuente
-│   └── main.py             # Archivo principal de levantamiento
-├── .gitignore              # Archivo que indica a Git el contenido a ignorar
-├── requirements.txt        # Define las dependencias y librerias necesarias
-└── README.md               # Documento de presentación del proyecto
+├── src/
+│   ├── index.html
+│   └── main.js
+└── README.md
 ```
+
+---
+
+## Requisitos previos
+
+- **Navegador web**(Firefox/Chrome/Edge).
+- (Recomendado) **Node.js 18+** *o* **Python 3** para levantar un servidor local y evitar problemas de CORS/rutas al abrir archivos directamente.
+
+---
+
+## Instalación y ejecución
+
+### Opción A) Abrir directo (rápido)
+1. Clona el repositorio:
+   ```bash
+   git clone <URL_DEL_REPO>
+   cd adopcion-ids-equipo7-frontend
+   ```
+2. Abre el archivo en la carpeta:
+   - `src/index.html` en tu navegador (doble click o “Open With Browser”).
+
+### Opción B) Servidor local (recomendado)
+
+#### Con Python
+```bash
+cd adopcion-ids-equipo7-frontend
+python3 -m http.server 5173 --directory src
+```
+Luego abre en el navegador:
+- `http://localhost:5173`
+
+
+---
+
+## ¿Qué debería verse?
+
+Al abrir `index.html`, se muestra un mensaje tipo **“¡Hola Mundo! El Frontend está vivo!”**.
+
+---
 
 
