@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home | Perfil</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Home</h1>
+    <nav class="nav">
+      <a href="./home.html" class="active">Perfil</a>
+      <a href="./update.html">Actualizar</a>
+      <a href="./login.html" id="linkLogin" class="hidden">Login</a>
+      <button id="btnLogout" class="btn btn-secondary">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Mi perfil</h2>
+      <p class="muted" id="status">Cargando…</p>
+
+      <div id="profile" class="profile hidden">
+        <div class="row"><span class="label">ID</span><span id="p_id"></span></div>
+        <div class="row"><span class="label">Nombre</span><span id="p_nombre"></span></div>
+        <div class="row"><span class="label">Email</span><span id="p_email"></span></div>
+        <div class="row"><span class="label">Código Postal</span><span id="p_cp"></span></div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="./update.html">Editar información</a>
+      </div>
+
+      <pre id="debug" class="hidden"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="./js/home.js"></script>
+</body>
+</html>
