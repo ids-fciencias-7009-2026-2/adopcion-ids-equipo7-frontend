@@ -13,7 +13,7 @@ btnLogout.addEventListener("click", async () => {
   // Si falla, igual limpiamos sesión.
   await api("/usuarios/logout", { method: "POST" });
   clearSession();
-  window.location.href = "./login.html";
+  window.location.href = "./index.html";
 });
 
 function showProfile(u) {
