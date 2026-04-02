@@ -3,7 +3,7 @@ import { getToken } from "./auth.js";
 
 function buildAuthHeader(token) {
   if (!token) return null;
-  if (!AUTH_PREFIX) return token;         // token "pelón"
+  if (!AUTH_PREFIX) return token;         // token crudo
   return `${AUTH_PREFIX} ${token}`;       // Bearer token
 }
 
