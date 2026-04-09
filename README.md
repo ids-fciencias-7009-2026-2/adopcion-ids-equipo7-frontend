@@ -18,10 +18,25 @@ Este repositorio contiene una versión mínima del frontend para la práctica, s
 ## Estructura del proyecto
 
 ```
+```text
 adopcion-ids-equipo7-frontend/
 ├── src/
-│   ├── index.html
-│   └── main.js
+│   ├── css/
+│   │   └── styles.css       # Estilo global y variables de diseño
+│   ├── js/
+│   │   ├── api.js           # Fetch e inyección del Token en Headers
+│   │   ├── auth.js          # Manejo de sessionStorage y protección de rutas
+│   │   ├── config.js        # Variables globales de entorno (ej. BASE_URL)
+│   │   ├── home.js          # Lógica para la vista home
+│   │   ├── login.js         # Lógica de validación e inicio de sesión
+│   │   ├── register.js      # Lógica de validación y registro de cuentas
+│   │   └── update.js        # Lógica para actualizar la información del usuario
+│   ├── index.html           # Vista pública: Pantalla de bienvenida
+│   ├── login.html           # Vista pública: Formulario de inicio de sesión
+│   ├── register.html        # Vista pública: Formulario de registro de cuentas
+|   ├── home.html            # Vista protegida: Panel principal del usuario
+│   └── update.html          # Vista protegida: Formulario de edición de perfil
+├── .gitignore
 └── README.md
 ```
 
