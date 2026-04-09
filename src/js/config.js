@@ -11,4 +11,4 @@ export const ME_USES_QUERY_EMAIL = false;
 // Update endpoint:
 // - Si backend usa PUT /usuarios/{email} => true
 // - Si backend usa PUT /usuarios => false
-export const UPDATE_USES_PATH_EMAIL = true;
+export const UPDATE_USES_PATH_EMAIL = false;
