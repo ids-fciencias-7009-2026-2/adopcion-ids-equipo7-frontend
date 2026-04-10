@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Actualizar | Perfil</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Actualizar</h1>
+    <nav class="nav">
+      <a href="./home.html">Perfil</a>
+      <a href="./update.html" class="active">Actualizar</a>
+      <button id="btnBack" class="btn btn-secondary">Volver</button>
+      <button id="btnLogout" class="btn btn-secondary">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Editar información</h2>
+      <p class="muted" id="status">Cargando datos…</p>
+
+      <form id="frm" class="form hidden">
+        <label>
+          Nombre
+          <input id="nombre" name="nombre" required />
+        </label>
+
+        <label>
+          Email
+          <input id="email" name="email" type="email" required />
+        </label>
+
+        <label>
+          Código Postal
+          <input id="codigoPostal" name="codigoPostal" required />
+        </label>
+
+        <label>
+          Password (opcional)
+          <input id="password" name="password" type="password" autocomplete="new-password" />
+        </label>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Guardar</button>
+          <button class="btn btn-secondary" type="button" id="btnCancel">Cancelar</button>
+        </div>
+      </form>
+
+      <p id="msg" class="msg"></p>
+      <pre id="debug" class="hidden"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="./js/update.js"></script>
+</body>
+</html>

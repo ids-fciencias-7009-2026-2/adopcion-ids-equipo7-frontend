@@ -1,67 +1,118 @@
-# adopcion-ids-equipo7-frontend
+# Frontend Adopción — Equipo 7
 
-Frontend del **Sistema de Adopción de Mascotas (Equipo 7)**.
-
-Este repositorio contiene una versión mínima del frontend para la práctica, sirve para validar que el repo de frontend fue inicializado correctamente y que se puede ejecutar localmente.
-
----
-
-## Tecnologías
-
-- HTML5
-- JavaScript (Vanilla)
-
-> No usa frameworks ni dependencias por ahora.
+Este repositorio contiene el **frontend** (puro **HTML + CSS + JavaScript**) para el sistema de adopción de mascotas.
+Está pensado para consumirse con el **backend** del equipo (API en Spring Boot + Kotlin).
 
 ---
 
-## Estructura del proyecto
-
-```
-adopcion-ids-equipo7-frontend/
-├── src/
-│   ├── index.html
-│   └── main.js
-└── README.md
-```
+## Tecnologías utilizadas
+- **HTML5 + CSS3**
+- **JavaScript (ES Modules)** usando `fetch` para consumir la API
+- **sessionStorage** para guardar token/sesión
 
 ---
 
 ## Requisitos previos
+- **Backend corriendo** en `http://localhost:8080` (revisa el README del backend para configurar BD y levantarlo).
+- Navegador moderno (Firefox/Chrome).
+- Una forma de servir el frontend como sitio estático (recomendado **Python 3**).
 
-- **Navegador web**(Firefox/Chrome/Edge).
-- (Recomendado) **Node.js 18+** *o* **Python 3** para levantar un servidor local y evitar problemas de CORS/rutas al abrir archivos directamente.
+> Nota sobre autenticación: el backend espera el token en el header `Authorization` **tal cual** (sin el prefijo `Bearer`).
 
 ---
 
-## Instalación y ejecución
+## Estructura esperada del proyecto
+Dentro de `src/`:
+- `index.html`
+- `login.html`
+- `register.html`
+- `home.html`
+- `update.html`
+- `css/` (estilos, por ejemplo `css/style.css`)
+- `js/` (módulos de JS: `api.js`, `auth.js`, `config.js`, `home.js`, `update.js`, `login.js`, `register.js`, etc.)
 
-### Opción A) Abrir directo (rápido)
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/ids-fciencias-7009-2026-2/adopcion-ids-equipo7-frontend.git
-   cd adopcion-ids-equipo7-frontend
-   ```
-2. Abre el archivo en la carpeta:
-   - `src/index.html` en tu navegador (doble click o “Open With Browser”).
+```text
+.
+├── docs/
+│   ├── diagramaCU1.png
+│   ├── diagramaCU3.png
+│   ├── diargamaCU2.png
+│   └── documento-evolutivo-v2.pdf
+├── src/
+│   ├── css/
+│   │   └── styles.css
+│   ├── js/
+│   │   ├── api.js
+│   │   ├── auth.js
+│   │   ├── config.js
+│   │   ├── home.js
+│   │   ├── login.js
+│   │   ├── register.js
+│   │   └── update.js
+│   ├── home.html
+│   ├── index.html
+│   ├── login.html
+│   ├── main.js
+│   ├── register.html
+│   └── update.html
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
-### Opción B) Servidor local (recomendado)
 
-#### Con Python
+---
+
+## Configuración rápida
+  Revisa `src/js/config.js` (o el archivo de configuración equivalente) y confirma que el **base URL** apunte a:
+- `http://localhost:8080`
+
+---
+
+## Correr el frontend (local)
+Desde la raíz del repo:
+
 ```bash
-cd adopcion-ids-equipo7-frontend
 python3 -m http.server 5173 --directory src
 ```
-Luego abre en el navegador:
-- `http://localhost:5173`
 
-
----
-
-## ¿Qué debería verse?
-
-Al abrir `index.html`, se muestra un mensaje tipo **“¡Hola Mundo! El Frontend está vivo!”**.
+Abre en tu navegador:
+- `http://localhost:5173/index.html`
 
 ---
 
+## Flujo mínimo de prueba (end-to-end)
+Con **backend encendido**:
 
+1) **Registro**
+- Entra a `register.html`
+- Crea un usuario (nombre, email, código postal, password)
+
+2) **Login**
+- Entra a `login.html`
+- Inicia sesión
+- Verifica que se guarde en `sessionStorage`:
+  - `token`
+  - `email`
+  - `userId` (si aplica)
+
+3) **Perfil /me**
+- Entra a `home.html`
+- Debe consultar `GET /usuarios/me` enviando el header:
+  - `Authorization: <token>` (sin `Bearer`)
+
+4) **Actualizar datos**
+- Entra a `update.html`
+- Debe hacer `PUT /usuarios` (ya que usa token).
+
+5) **Logout**
+- Ejecuta `POST /usuarios/logout` enviando:
+  - `Authorization: <token>`
+- Limpia `sessionStorage` y redirige a login.
+
+---
+
+## Entregables
+- Código fuente del frontend.
+- README actualizado.
+- Tag correspondiente en el repositorio del frontend (1.0.0).

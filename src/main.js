@@ -1,7 +1,16 @@
+/**
+ * main.js - Lógica global de la plataforma
+ * Se encarga de redirecciones automáticas y estados globales.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    const titulo = document.getElementById('mensaje');
+    console.log("Plataforma de Adopción inicializada.");
 
-    titulo.textContent = "¡Hola Mundo! El Frontend está vivo!";
+    // Verificamos si ya existe un token en el almacenamiento de sesión
+    const token = sessionStorage.getItem('token');
 
-    console.log("El repositorio de frontend ha sido inicializado correctamente.");
+    // Si el usuario ya tiene un token y está en la página de inicio, ir directamente a su perfil o al Home.
+    if (token) {
+        console.log("Sesión activa detectada.");
+        window.location.href = "home.html";
+    }
 });
