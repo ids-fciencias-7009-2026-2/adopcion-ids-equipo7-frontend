@@ -17,6 +17,7 @@ document.getElementById('btn-register').addEventListener('click', async () => {
         return;
     }
 
+    // Limpiar cualquier mensaje de error previo
     errorMsg.textContent = "";
 
     try {
