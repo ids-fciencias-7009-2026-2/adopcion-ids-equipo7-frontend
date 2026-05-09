@@ -54,15 +54,14 @@ document.getElementById('btn-publish').addEventListener('click', async () => {
     // Limpiar cualquier mensaje de error previo
     errorMsg.textContent = "";
     // Intentar enviar los datos al backend para crear la publicación de adopción
-    try {
-        const response = await fetch("http://localhost:8080/mascotas", {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Verificar que el token se envía en la solicitud al backend
-            },
-            body: JSON.stringify(datos)
-        });
+    const response = await fetch("http://localhost:8080/mascotas/publicar", {
+        method: "POST",
+        headers: {
+             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(datos)
+    });
 
         if (response.ok) {
             const mascotaCreada = await response.json();
