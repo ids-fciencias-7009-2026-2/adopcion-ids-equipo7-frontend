@@ -1,54 +1,52 @@
-// @function mostrarPerfil(mascota) 
-// @description Muestra la información de la mascota en la página de publicación de adopción.
+import { api } from "./api.js";
+import { clearSession } from "./auth.js";
+
+const btnLogout = document.querySelector("#btnLogout");
+
+if (btnLogout) {
+  btnLogout.addEventListener("click", async () => {
+    await api("/usuarios/logout", { method: "POST" });
+    clearSession();
+    window.location.href = "./login.html";
+  });
+}
+
+function fotoSrc(mascota) {
+  const foto = mascota.fotoBase64 || mascota.foto || "";
+  if (!foto) return "https://via.placeholder.com/150?text=Sin+Foto";
+  if (typeof foto === "string" && foto.startsWith("data:")) return foto;
+  return `data:image/jpeg;base64,${foto}`;
+}
+
 function mostrarPerfil(mascota) {
-  const nombre = mascota.nombre || "Sin nombre";
-  const descripcion = mascota.descripcion || "Sin descripción disponible.";
-  const foto = mascota.imagen || "https://via.placeholder.com/150?text=Sin+Foto";
-  const tipo = mascota.tipo || "Desconocido";
-  const raza = mascota.raza || "Desconocida";
-  const codigoPostal = mascota.codigoPostal || "Desconocido";
-  document.getElementById("mascot-name").textContent = nombre;
-  document.getElementById("mascot-description").textContent = descripcion;
-  document.getElementById("mascot-photo").src = foto;
-  document.getElementById("mascot-type").textContent = tipo;
-  document.getElementById("mascot-breed").textContent = raza;
-  document.getElementById("mascot-zipcode").textContent = codigoPostal;
+  document.getElementById("mascot-name").textContent = mascota.nombre || "Sin nombre";
+  document.getElementById("mascot-description").textContent = mascota.descripcion || "Sin descripción disponible.";
+  document.getElementById("mascot-photo").src = fotoSrc(mascota);
+  document.getElementById("mascot-type").textContent = mascota.tipo || "Desconocido";
+  document.getElementById("mascot-breed").textContent = mascota.raza || "Desconocida";
+  document.getElementById("mascot-zipcode").textContent = mascota.codigoPostal || "Desconocido";
 }
 
-// @function obtenerMascotaDelBackend()
-// @description Obtiene la información de la mascota desde el backend usando el ID proporcionado en la URL y muestra su perfil.
 async function obtenerMascotaDelBackend() {
-    const params = new URLSearchParams(window.location.search);
-    // Obtener el ID de la mascota desde los parámetros de la URL.
-    const id = params.get("id");
-    // Obtener el token de autenticación para hacer la solicitud al backend.
-    const token = sessionStorage.getItem("token");
-   // Verificar que se haya proporcionado un ID de mascota en la URL. 
-    if (!id) {
-        console.error("No se proporcionó un ID de mascota en la URL.");
-        return;
-    }
-    // Hacer una solicitud al backend para obtener la información de la mascota usando el ID proporcionado.
-    try {
-        const response = await fetch(`http://localhost:8080/mascotas/detalle/${id}`, {
-            method: 'GET',
-            headers: { 
-                'Authorization': `Bearer ${token}` 
-            }
-        });
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
 
-        if (response.ok) {
-            const mascotaReal = await response.json(); // Obtener la información de la mascota desde el backend.
-            mostrarPerfil(mascotaReal); // Mostrar la información de la mascota en la página.
-        } else {
-            // Error al obtener la información de la mascota.
-            alert("Error al obtener la publicación.");
-        }
-    } catch (error) {
-        // Manejo de errores de comunicación con el backend.
-        alert("No se pudo conectar con el servidor.");
+  if (!id) {
+    alert("No se proporcionó un ID de mascota en la URL.");
+    return;
+  }
+
+  try {
+    const response = await api(`/mascotas/detalle/${encodeURIComponent(id)}`);
+
+    if (response.ok) {
+      mostrarPerfil(response.data);
+    } else {
+      alert(response.data?.mensaje || response.data?.error || "Error al obtener la publicación.");
     }
+  } catch (error) {
+    alert("No se pudo conectar con el servidor.");
+  }
 }
 
-// Cargado de la  página, obtenemos la mascota del backend para mostrar su información.
-document.addEventListener('DOMContentLoaded', obtenerMascotaDelBackend);
+document.addEventListener("DOMContentLoaded", obtenerMascotaDelBackend);

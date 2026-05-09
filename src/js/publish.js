@@ -1,80 +1,90 @@
-const imageInput = document.getElementById('imageInput');
-const preview = document.getElementById('preview');
+import { api } from "./api.js";
+import { getStoredUserId, requireAuth, clearSession } from "./auth.js";
 
-// @function: Maneja la selección de imagen y muestra una vista previa
-imageInput.addEventListener('change', function () {
-    const file = this.files[0];
+const imageInput = document.getElementById("imageInput");
+const preview = document.getElementById("preview");
+const errorMsg = document.getElementById("reg-error");
+const btnLogout = document.querySelector("#btnLogout");
 
-    // Validar que se haya seleccionado un archivo
-    if (!file) {
-        preview.style.display = 'none';
-        return;
-        }
+if (btnLogout) {
+  btnLogout.addEventListener("click", async () => {
+    await api("/usuarios/logout", { method: "POST" });
+    clearSession();
+    window.location.href = "./login.html";
+  });
+}
 
-    // Verificar que el archivo seleccionado es una imagen
-    if (!file.type.startsWith('image/')) {
-        alert('Please select a valid image file.');
-        this.value = ''; // Reset input
-        preview.style.display = 'none';
-        return;
-    }
+imageInput.addEventListener("change", function () {
+  const file = this.files[0];
 
-    // Leer y desplegar la imagen seleccionada usando FileReader
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-    };
-    reader.onerror = function () {
-        alert('Error reading file.');
-    };
-    reader.readAsDataURL(file);
+  if (!file) {
+    preview.removeAttribute("src");
+    preview.style.display = "none";
+    return;
+  }
+
+  if (!file.type.startsWith("image/")) {
+    alert("Selecciona una imagen válida.");
+    this.value = "";
+    preview.removeAttribute("src");
+    preview.style.display = "none";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    preview.src = e.target.result;
+    preview.style.display = "block";
+  };
+  reader.onerror = function () {
+    alert("Error al leer el archivo.");
+  };
+  reader.readAsDataURL(file);
 });
 
-// @function: Maneja el evento de publicación del animal
-document.getElementById('btn-publish').addEventListener('click', async () => {
-    const errorMsg = document.getElementById('reg-error'); // Suponiendo que existte IDe es
-    const token = sessionStorage.getItem('token'); // Recuperar token 
-    // Obtenemos los datos del formulario para enviar al backend
-    const datos = {
-        nombre: document.getElementById('mascot-name').value.trim(),
-        imagen: document.getElementById('preview').src,
-        descripcion: document.getElementById('mascot-description').value.trim(),
-        tipo: document.getElementById('mascot-type').value.trim(),
-        raza: document.getElementById('mascot-breed').value.trim(),
-        codigoPostal: document.getElementById('mascot-zipcode').value.trim(),
-    };
+document.getElementById("btn-publish").addEventListener("click", async () => {
+  const token = requireAuth();
+  if (!token) return;
 
-    // Validación básica, asegurarse que ningun campo obligatorio esté vacío
-    if (!datos.nombre || !datos.imagen || !datos.descripcion || !datos.tipo || !datos.raza || !datos.codigoPostal) {
-        errorMsg.textContent = "Por favor, llena todos los campos .";
-        return;
+  const usuarioId = getStoredUserId();
+  if (!usuarioId) {
+    errorMsg.textContent = "No se encontró el usuario de la sesión. Vuelve a iniciar sesión.";
+    return;
+  }
+
+  const datos = {
+    nombre: document.getElementById("mascot-name").value.trim(),
+    fotoBase64: preview.src,
+    descripcion: document.getElementById("mascot-description").value.trim(),
+    tipo: document.getElementById("mascot-type").value.trim(),
+    raza: document.getElementById("mascot-breed").value.trim(),
+    codigoPostal: document.getElementById("mascot-zipcode").value.trim(),
+    usuarioId
+  };
+
+  if (!datos.nombre || !datos.fotoBase64 || !datos.descripcion || !datos.tipo || !datos.raza || !datos.codigoPostal) {
+    errorMsg.textContent = "Por favor, llena todos los campos.";
+    return;
+  }
+
+  errorMsg.textContent = "";
+
+  try {
+    const response = await api("/mascotas/publicar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos)
+    });
+
+    if (response.ok) {
+      const mascotaCreada = response.data;
+      const id = mascotaCreada?.animalId ?? mascotaCreada?.id;
+      alert("¡Mascota publicada con éxito!");
+      window.location.href = `./publication_view.html?id=${encodeURIComponent(id)}`;
+    } else {
+      errorMsg.textContent = response.data?.error || response.data?.mensaje || "Error al publicar. Verifica los datos.";
     }
-
-    // Limpiar cualquier mensaje de error previo
-    errorMsg.textContent = "";
-    // Intentar enviar los datos al backend para crear la publicación de adopción
-    try { 
-        const response = await fetch("http://localhost:8080/mascotas/publicar", {
-            method: "POST",
-            headers: {
-                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(datos)
-        });
-
-        if (response.ok) {
-            const mascotaCreada = await response.json();
-            alert("¡Mascota publicada con éxito!");
-            // Redirección a la publicación recien creada.
-            window.location.href = `publicacion.html?id=${mascotaCreada.id}`; 
-        } else {
-            // Error en los datos enviados o en la creación de la publicación en el backend.
-            errorMsg.textContent = "Error al publicar. Verifica los datos.";
-        }
-    } catch (error) {
-        // Error al no poder establecer conexión con el backend.
-        errorMsg.textContent = "No hay conexión con el servidor.";
-    }
+  } catch (error) {
+    errorMsg.textContent = "No hay conexión con el servidor.";
+  }
 });
