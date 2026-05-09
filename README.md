@@ -48,12 +48,6 @@ El frontend consume el **backend del equipo** construido con **Spring Boot + Kot
 ## Estructura del proyecto
 
 ```text
-.
-├── docs/
-│   ├── diagramaCU1.png
-│   ├── diargamaCU2.png
-│   ├── diagramaCU3.png
-│   └── documento-evolutivo-v2.pdf
 ├── src/
 │   ├── css/
 │   │   └── styles.css
@@ -77,6 +71,17 @@ El frontend consume el **backend del equipo** construido con **Spring Boot + Kot
 │   ├── publish_mascot.html
 │   ├── register.html
 │   └── update.html
+├── docs/
+│   ├── diagrama-CU1.png
+│   ├── diagrama-CU2.png
+│   ├── diagrama-CU3.png
+│   ├── diagrama-CU4.png
+│   ├── diagrama-CU5.png
+│   ├── diagrama-flujo-autenticacion.png
+│   ├── arquitectura-cliente-servidor.png
+│   ├── arquitectura-tres-capas.png
+│   ├── documento-evolutivo-v2.pdf
+│   └── documento-evolutivo-v3.pdf
 ├── .gitignore
 ├── README.md
 └── requirements.txt
