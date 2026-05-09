@@ -17,6 +17,7 @@ document.getElementById('btn-register').addEventListener('click', async () => {
         return;
     }
 
+    // Limpiar cualquier mensaje de error previo
     errorMsg.textContent = "";
 
     try {
@@ -32,7 +33,7 @@ document.getElementById('btn-register').addEventListener('click', async () => {
             window.location.href = "./login.html";
         } else {
             // Manejo de errores específicos, como email ya registrado
-            errorMsg.textContent = r.data?.error || "Error al crear la cuenta. El correo podría ya estar registrado.";
+            errorMsg.textContent = response.data?.error || "Error al crear la cuenta. El correo podría ya estar registrado.";
         }
     } catch (err) {
         // Manejo de errores de comunicación con el backend

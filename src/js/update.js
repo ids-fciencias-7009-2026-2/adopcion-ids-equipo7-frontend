@@ -11,7 +11,6 @@ const btnBack = document.querySelector("#btnBack");
 const btnCancel = document.querySelector("#btnCancel");
 const btnLogout = document.querySelector("#btnLogout");
 
-btnBack.addEventListener("click", () => history.back());
 btnCancel.addEventListener("click", () => (window.location.href = "./home.html"));
 
 btnLogout.addEventListener("click", async () => {

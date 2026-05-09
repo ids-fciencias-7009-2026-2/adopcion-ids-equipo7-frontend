@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | Perfil</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+    <header class="topbar">
+        <h1>Publicar mascota</h1>
+        <nav class="nav">
+            <a href="./home.html">Perfil</a>
+            <a href="./update.html">Actualizar Datos</a>
+            <a href="./mascotas.html">Explorar Mascotas</a>
+            <a href="./publish_mascot.html" class="active">Dar en Adopción</a>
+            <button id="btnLogout" class="btn btn-secondary">Logout</button>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="card">
+            <h1>Publicar Mascota</h1>
+            <p><strong>Nombre de la mascota:</strong></p>
+            <div>
+            <input type="text" id="mascot-name" placeholder="Inserte nombre">
+            </div>
+            <p><strong>Foto de la mascota:</strong></p>
+            <div>
+            <input type="file" id="imageInput" accept="image/*">
+            </div>
+            <div>
+            <img id="preview" alt="Su imagen se verá así">
+            </div>
+            <p><strong>Descripción física de la mascota:</strong></p>
+            <div>
+            <input type="text" id="mascot-description" placeholder="Inserte descripción">
+            </div>
+            <p><strong>Tipo de mascota:</strong></p>
+            <div>
+            <input type="text" id="mascot-type" placeholder="Inserte tipo">
+            </div>
+            <p><strong>Raza de la mascota:</strong></p>
+            <div>
+            <input type="text" id="mascot-breed" placeholder="Inserte raza">
+            </div>
+            <p><strong>Código postal de la mascota:</strong></p>
+            <div>
+            <input type="number" id="mascot-zipcode" placeholder="Inserte código postal">
+            </div>
+            <p id="reg-error" style="color: red;"></p>
+            <div>
+            <button id="btn-publish">Publicar</button>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="./js/publish.js"></script>
+</head>
+</html>
