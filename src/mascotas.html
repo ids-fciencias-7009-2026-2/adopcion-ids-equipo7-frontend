@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Buscador de adopciones</title>
+
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Explorar mascotas</h1>
+    <nav class="nav">
+      <a href="./home.html">Perfil</a>
+      <a href="./update.html">Actualizar Datos</a>
+      <a href="./mascotas.html" class="active">Explorar Mascotas</a>
+      <a href="./publish_mascot.html">Dar en Adopción</a>
+      <button id="btnLogout" class="btn btn-secondary">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Publicaciones</h2>
+
+      <div style="display:flex; gap:10px; align-items:center; margin:10px 0;">
+        <input id="q" type="text" placeholder="Buscar por nombre..." style="flex:1;" />
+        <button id="btnBuscar" class="btn btn-primary">Buscar</button>
+      </div>
+
+      <div style="display:flex; gap:8px; margin:10px 0; flex-wrap:wrap;">
+        <button class="tab active" data-tab="todas">Todas</button>
+        <button class="tab" data-tab="mias">Mis publicaciones</button>
+        <button class="tab" data-tab="interes">Me interesa</button>
+      </div>
+
+      <p class="muted" id="status">Cargando…</p>
+
+      <!-- Lista con scroll -->
+      <div id="list" style="display:grid; gap:12px; max-height:60vh; overflow:auto; padding:8px; border:1px solid #2a2f3a; border-radius:12px;"></div>
+
+      <pre id="debug" class="hidden" style="margin-top:10px;"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="./js/mascotas.js"></script>
+</body>
+</html>
