@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Publicación</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+    <header class="topbar">
+        <h1>Perfil de mascota</h1>
+        <nav class="nav">
+            <a href="./home.html">Perfil</a>
+            <a href="./update.html">Actualizar Datos</a>
+            <a href="./mascotas.html">Explorar Mascotas</a>
+            <a href="./publish_mascot.html">Dar en Adopción</a>
+            <button id="btnLogout" class="btn btn-secondary">Logout</button>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="card">
+            <h2>Editar publicación</h2>
+            <p class="muted" id="status">Cargando datos…</p>
+            <form id="frm" class="form hidden">
+                <label>
+                    Nombre
+                    <input id="mascot-name" name="mascot-name" required />
+                </label>
+                <label>
+                    Descripción
+                    <input id="mascot-description" name="mascot-description" required />
+                </label>
+                <p><strong>Foto de la mascota:</strong></p>
+                <div>
+                    <input type="file" id="imageInput" required="image/*">
+                </div>
+                <div>
+                    <img id="preview" alt="Su imagen se verá así">
+                </div>
+                <label>
+                    Tipo de la mascota
+                    <input id="mascot-type" name="mascot-type" required />
+                </label>
+                <label>
+                    Raza de la mascota
+                    <input id="mascot-breed" name="mascot-breed" required />
+                </label>
+                <label>
+                    Código Postal
+                    <input id="mascot-zipcode" name="mascot-zipcode" required />
+                </label>
+                <div class="actions">
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                    <button id="btn-cancel">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+ <script type="module" src="./js/update_mascot.js"></script>
+</body>
+</html>
