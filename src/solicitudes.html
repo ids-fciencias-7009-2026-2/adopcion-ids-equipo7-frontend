@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes de adopción | Equipo 7</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header class="topbar">
+    <h1>Solicitudes de adopción</h1>
+    <nav class="nav">
+        <a href="./home.html">Perfil</a>
+        <a href="./update.html">Actualizar Datos</a>
+        <a href="./mascotas.html">Explorar Mascotas</a>
+        <a href="./publish_mascot.html">Dar en Adopción</a>
+        <a href="./solicitudes.html" class="active">Solicitudes</a>
+        <button id="btnLogout" class="btn btn-secondary">Logout</button>
+    </nav>
+</header>
+
+<main class="container" id="solicitudes-container">
+    <h1 class="page-title">Interesados en mis mascotas</h1>
+
+    <!-- Estado vacío: Cuando el usuario no tiene ninguna mascota publicada -->
+    <div class="global-empty-state" id="global-empty-state" style="display: none;">
+        <h2>Aún no has publicado ninguna mascota. </h2>
+        <p>Cuando des en adopción a un animal, aquí podrás ver a las personas interesadas en darle un hogar.</p>
+        <a href="./publish_mascot.html" class="btn-contactar">Publicar mi primera mascota</a>
+    </div>
+
+    <!-- Estado no vacío: Cuando el usuario tiene al menos una mascota publicada -->
+    <div id="lista-solicitudes">
+    </div>
+</main>
+<script type="module" src="./js/solicitudes.js"></script>
+</body>
+</html>
