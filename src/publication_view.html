@@ -30,6 +30,25 @@
             <p><strong>Raza:</strong> <span id="mascot-breed"></span></p>
             <p><strong>Código Postal:</strong> <span id="mascot-zipcode"></span></p>
         </div>
+        <div class="card">
+            <button id="btn-editar" class="hidden">Editar Publicación</button>
+            <button id="btn-adoptar" class="hidden">Confirmar Adopción</button>
+            <button id="btn-eliminacion" class="hidden">Eliminar Publicación</button>
+        </div>
+        <div id="popin-confirmacion" class="hidden">
+            <div class="popin-contenido">
+                <h3>¿Confirmar adopción?</h3>
+                <button id="btn-confirm-adopt">Sí, confirmar</button>
+                <button id="btn-cancel">Cancelar</button>
+            </div>
+        </div>
+        <div id="popin-eliminacion" class="hidden">
+            <div class="popin-contenido">
+                <h3>¿Confirmar eliminación de publicación?</h3>
+                <button id="btn-confirm-elim">Sí, eliminar</button>
+                <button id="btn-cancel-elim">Cancelar</button>
+            </div>
+        </div>
     <script type="module" src="./js/display.js"></script>
     </main>
 </body>

@@ -99,3 +99,150 @@ pre { background: #0b0d12; border: 1px solid var(--border); padding: 10px; borde
     height: 100%;
     object-fit: cover;
   }
+
+ /* === Estilos para Solicitudes === */
+
+ .page-title {
+     margin-bottom: 2rem;
+     color: #ffffff;
+     border-bottom: 2px solid #ddd;
+     padding-bottom: 0.5rem;
+ }
+
+ /* Diseño de la Tarjeta Agrupada */
+ .mascota-card {
+     background-color: #ffffff;
+     border-radius: 12px;
+     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+     margin-bottom: 2rem;
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* Cabecera de la Tarjeta (Datos de la mascota) */
+ .mascota-header {
+     display: flex;
+     align-items: center;
+     padding: 1.5rem;
+     background-color: #30C244;
+     border-bottom: 1px solid #c8e6c9;
+ }
+
+ .mascota-foto {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     object-fit: cover;
+     margin-right: 1.5rem;
+     border: 3px solid white;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ }
+
+ .mascota-info {
+     flex-grow: 1; /* Empuja el botón de detalle hacia la derecha */
+ }
+
+ .mascota-info h2 { margin: 0 0 5px 0; color: #000000; }
+ .mascota-info p { margin: 0; color: #000000; font-size: 0.95rem; font-weight: 500; }
+
+ /* Botón de "Ver Detalle" en la cabecera */
+ .mascota-acciones {
+     margin-left: 1rem;
+ }
+
+ .btn-detalle {
+     background-color: #2c3e50;
+     color: white;
+     text-decoration: none;
+     padding: 8px 16px;
+     border-radius: 5px;
+     font-size: 0.9rem;
+     font-weight: bold;
+     transition: background-color 0.2s ease;
+ }
+
+ .btn-detalle:hover {
+     background-color: #1a252f;
+ }
+
+ /* Cuerpo de la Tarjeta (Lista de Interesados) */
+ .interesados-body {
+     padding: 1.5rem;
+ }
+
+ .interesados-body h3 {
+     margin-top: 0;
+     font-size: 1.1rem;
+     color: #333;
+     margin-bottom: 1rem;
+ }
+
+ /* Estilo de la lista de contactos */
+ .interesado-item {
+     display: grid;
+     grid-template-columns: 1fr 1fr auto;
+     align-items: center;
+     background-color: #f9f9f9;
+     padding: 1rem;
+     border-radius: 8px;
+     margin-bottom: 0.8rem;
+     border: 1px solid #eee;
+     transition: transform 0.2s ease, border-color 0.2s ease;
+ }
+
+ .interesado-item:hover {
+     transform: translateX(5px);
+     border-color: #bcaaa4;
+ }
+
+ .interesado-datos h4 { margin: 0 0 4px 0; font-size: 1rem;  color: #000000; }
+ .interesado-datos p { margin: 0; font-size: 0.85rem; color: #777; }
+
+ .interesado-fecha {
+     color: #888;
+     font-size: 0.85rem;
+     text-align: center;
+ }
+
+ .btn-contactar {
+     background-color: #4CAF50;
+     color: white;
+     text-decoration: none;
+     padding: 8px 16px;
+     border-radius: 5px;
+     font-size: 0.9rem;
+     font-weight: bold;
+     transition: background-color 0.2s ease;
+     display: inline-block;
+ }
+
+ .btn-contactar:hover { background-color: #388e3c; }
+
+ /* Estados Vacíos */
+ .empty-state {
+     text-align: center;
+     padding: 2rem;
+     color: #7f8c8d;
+ }
+
+ /* Estado Vacío Global (Sin mascotas publicadas) */
+ .global-empty-state {
+     text-align: center;
+     padding: 4rem 2rem;
+     background-color: #fff;
+     border-radius: 12px;
+     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+     margin-top: 2rem;
+ }
+
+ .global-empty-state h2 {
+     color: #2c3e50;
+     margin-bottom: 1rem;
+ }
+
+ .global-empty-state p {
+     color: #7f8c8d;
+     margin-bottom: 2rem;
+     font-size: 1.1rem;
+ }
