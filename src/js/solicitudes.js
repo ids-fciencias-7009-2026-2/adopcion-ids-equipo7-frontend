@@ -7,6 +7,22 @@ requireAuth();
 // Esperamos a que la página HTML termine de cargar antes de pedir los datos
 document.addEventListener("DOMContentLoaded", () => {
     cargarSolicitudes();
+
+    const btnLogout = document.getElementById("btnLogout");
+        if (btnLogout) {
+            btnLogout.addEventListener("click", async () => {
+                try {
+                    // Notificamos al servidor para que invalide el token en la BD
+                    await api('/usuarios/logout', { method: 'POST' });
+                } catch (error) {
+                    console.error("Error al notificar el logout al servidor:", error);
+                } finally {
+                    // Limpiamos el rastro local por seguridad y redirigimos
+                    sessionStorage.clear();
+                    window.location.href = "./login.html";
+                }
+            });
+        }
 });
 
 // Función principal que trae los datos del servidor y el manejo de errores
