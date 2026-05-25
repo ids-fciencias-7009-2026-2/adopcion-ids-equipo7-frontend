@@ -1,3 +1,4 @@
+import { api } from "./api.js";
 import { requireAuth, clearSession, getStoredEmail, getStoredUserId } from "./auth.js";
 const imageInput = document.getElementById("imageInput");
 const preview = document.getElementById("preview");
@@ -98,6 +99,13 @@ async function loadMe() {
     return;
   }
   mostrarPerfil(info_mascota.data);
+
+  // Ocultar el mensaje de "Cargando datos..." para que la vista quede limpia
+  const statusEl = document.getElementById("status");
+  if (statusEl) {
+    statusEl.style.display = "none";
+  }
+  
   frm.classList.remove("hidden");
 })();
 
