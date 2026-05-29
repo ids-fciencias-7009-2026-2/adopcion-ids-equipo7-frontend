@@ -12,3 +12,6 @@ export const ME_USES_QUERY_EMAIL = false;
 // - Si backend usa PUT /usuarios/{email} => true
 // - Si backend usa PUT /usuarios => false
 export const UPDATE_USES_PATH_EMAIL = false;
+
+// API key de Google Maps aquí para usar el componente de mapa en el frontend.
+export const GOOGLE_MAPS_KEY = "";
