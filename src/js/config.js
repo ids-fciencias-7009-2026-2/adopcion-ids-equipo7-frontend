@@ -14,4 +14,4 @@ export const ME_USES_QUERY_EMAIL = false;
 export const UPDATE_USES_PATH_EMAIL = false;
 
 // API key de Google Maps aquí para usar el componente de mapa en el frontend.
-const GOOGLE_MAPS_KEY = "";
+export const GOOGLE_MAPS_KEY = "";
